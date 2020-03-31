@@ -19,7 +19,7 @@ public class SendStaticData {
     private final KafkaTemplate<String, ScooterRawDataDto> template;
 
     //todo: put here uuid when scooter is registred
-    private static UUID firstId = UUID.fromString("63df476d-0aac-4fb0-a8a2-6ae5b06f8556");
+    private static UUID firstId = UUID.fromString("37ffd5e0-9d4f-4dae-b54b-ca47bc4bb02c");
     private static UUID secondId = UUID.fromString("d883b312-33ce-43c1-8a9c-3dd07531e9ad");
     private static UUID thirdId = UUID.fromString("525fcbc7-4b94-4c16-98ec-5111a9d1f1be");
     private static UUID fourthId = UUID.fromString("b06f639a-a285-443d-a2ba-5fa34a51dc4a");
@@ -32,7 +32,7 @@ public class SendStaticData {
         template.send(RAW_DATA, scooter);
     }
 
-    @Scheduled(fixedRate = 1050L)
+   /* @Scheduled(fixedRate = 1050L)
     public void sendStatusDataToTopic2(){
         var scooter = new ScooterRawDataDto(secondId, 16.0, 0.0, (short) 60);
         log.info("Send data to topic '{}': {}", RAW_DATA, scooter);
@@ -56,6 +56,6 @@ public class SendStaticData {
         var scooter = new ScooterRawDataDto(fifthId, 25.0, 0.0, (short) 90);
         log.info("Send data to topic '{}': {}", RAW_DATA, scooter);
         template.send(RAW_DATA, scooter);
-    }
+    }*/
 
 }

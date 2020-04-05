@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: simulation-service
   kafka:
     bootstrap-servers: ${BOOTSTRAP_SERVERS}
     producer:
@@ -8,3 +10,8 @@ spring:
         spring.json.trusted.packages: "*"
         spring.json.type.mapping: >
           raw:com.softserve.kickscootersimplesimulation.ScooterRawDataDto
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_SERVER}/eureka/

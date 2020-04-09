@@ -1,4 +1,4 @@
-package com.softserve.kickscootersimplesimulation;
+package com.softserve.kickscootersimplesimulation.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ScooterRawDataDto {
     UUID id;
-    double latitude;
     double longitude;
-    byte battery;
+    double latitude;
+    int battery;
 }

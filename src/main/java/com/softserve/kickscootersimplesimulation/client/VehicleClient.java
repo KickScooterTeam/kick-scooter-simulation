@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.UUID;
 
-@FeignClient(name = "vehicle-service", url = "localhost:8085")
+@FeignClient(name = "vehicle-service")
 public interface VehicleClient {
 
     @PostMapping("/scooters")

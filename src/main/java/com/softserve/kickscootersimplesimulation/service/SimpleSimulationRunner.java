@@ -9,6 +9,7 @@ import com.softserve.kickscootersimplesimulation.model.TestScooter;
 import com.softserve.kickscootersimplesimulation.model.YNRoad;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -34,10 +35,13 @@ public class SimpleSimulationRunner implements SimulationRunner {
     private ScooterRawDataDto rawDto;       //global state, needs to be resolved
     private SimulationScenario scenario;    //global state, needs to be resolved
 
+    @Value("${service-token}")
+    private String bearerToken;
+
     @Override
     public UUID buildTestScooter(double stLat, double stLon, int battery, SimulationScenario scenario) {
         var scooter = new TestScooter();
-        UUID id = vehicleClient.registerScooter(scooter);
+        UUID id = vehicleClient.registerScooter(bearerToken,scooter);
         rawDto = new ScooterRawDataDto(id, stLon, stLat, battery);
         scenario.setId(id);
         this.scenario = scenario;
@@ -86,6 +90,7 @@ public class SimpleSimulationRunner implements SimulationRunner {
                 rawDto = new ScooterRawDataDto(id, point[0], point[1], scenario.getBattery());
                 index++;
             }
+            log.info("Send data to topic '{}': {}", RAW_DATA, rawDto);
             template.send(RAW_DATA, rawDto);
             try {
                 Thread.sleep(1000);

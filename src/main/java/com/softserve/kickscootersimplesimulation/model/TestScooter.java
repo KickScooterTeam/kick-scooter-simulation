@@ -8,6 +8,6 @@ import java.util.Random;
 @NoArgsConstructor
 @Data
 public class TestScooter {
-    private final String MODEL_NAME = "__test_scooter";
-    private Long serial  = Math.abs(new Random().nextLong());
+    private final String modelName = "__test_scooter";
+    private Long serialNumber = Math.abs(new Random().nextLong());
 }

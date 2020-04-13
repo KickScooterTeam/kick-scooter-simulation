@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: simulation-service
+  kafka:
+    bootstrap-servers: ${BOOTSTRAP_SERVERS}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: >
+          raw:com.softserve.kickscootersimplesimulation.model.ScooterRawDataDto
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_SERVER}/eureka/
+
+service-token: ${SERVICE_TOKEN}

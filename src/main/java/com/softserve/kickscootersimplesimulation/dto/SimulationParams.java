@@ -1,14 +1,15 @@
 package com.softserve.kickscootersimplesimulation.dto;
 
+import com.softserve.kickscootersimplesimulation.model.Condition;
 import lombok.Data;
+
+import java.util.UUID;
 
 @Data
 public class SimulationParams {
+    private UUID scooterId;
+    private double destLat;
+    private double destLon;
+    private Condition condition;
 
-    private int battery;
-    private double stLat;
-    private double stLon;
-    private double finLat;
-    private double finLon;
-    private int dischIndex;
 }

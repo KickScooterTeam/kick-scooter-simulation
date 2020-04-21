@@ -1,13 +1,28 @@
 package com.softserve.kickscootersimplesimulation.model;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.util.Random;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.UUID;
 
-@NoArgsConstructor
 @Data
+@Entity
 public class TestScooter {
-    private final String modelName = "__test_scooter";
-    private Long serialNumber = Math.abs(new Random().nextLong());
+
+    @Id
+    private UUID id;
+
+    private String modelName;
+
+    private Long serialNumber;
+
+    private double latitude;
+
+    private double longitude;
+
+    private int battery;
+
+    private boolean ping;
+
 }

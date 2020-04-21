@@ -15,4 +15,10 @@ eureka:
     service-url:
       defaultZone: http://${EUREKA_SERVER}/eureka/
 
+feign:
+  client:
+    config:
+      default:
+        readTimeout: 160000000
+
 service-token: ${SERVICE_TOKEN}

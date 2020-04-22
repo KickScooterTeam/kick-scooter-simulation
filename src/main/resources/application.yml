@@ -16,3 +16,7 @@ eureka:
       defaultZone: http://${EUREKA_SERVER}/eureka/
 
 service-token: ${SERVICE_TOKEN}
+
+logging:
+  file:
+    path: /var/log/simulation

@@ -10,6 +10,7 @@ public class SimulationParams {
     private UUID scooterId;
     private double destLat;
     private double destLon;
-    private Condition condition;
+    private Condition condition = Condition.NORMAL;
+    private int dischIndex = 3;
 
 }

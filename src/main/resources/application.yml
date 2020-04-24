@@ -1,6 +1,13 @@
 spring:
   application:
     name: simulation-service
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
   kafka:
     bootstrap-servers: ${BOOTSTRAP_SERVERS}
     producer:
@@ -8,7 +15,8 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
         spring.json.type.mapping: >
-          raw:com.softserve.kickscootersimplesimulation.model.ScooterRawDataDto
+          raw:com.softserve.kickscootersimplesimulation.dto.ScooterRawDataDto
+
 
 eureka:
   client:

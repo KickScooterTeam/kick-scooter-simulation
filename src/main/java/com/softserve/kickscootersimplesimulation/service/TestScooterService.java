@@ -4,7 +4,7 @@ import com.softserve.kickscootersimplesimulation.client.VehicleClient;
 import com.softserve.kickscootersimplesimulation.dto.TestScooterDto;
 import com.softserve.kickscootersimplesimulation.model.TestScooter;
 import com.softserve.kickscootersimplesimulation.repository.TestScooterRepo;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
@@ -12,12 +12,12 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class TestScooterService {
 
-    private VehicleClient vehicleClient;
-    private TestScooterRepo testScooterRepo;
-    private ConversionService convService;
+    private final VehicleClient vehicleClient;
+    private final TestScooterRepo testScooterRepo;
+    private final ConversionService convService;
 
     @Value("${service-token}")
     private String bearerToken;
@@ -31,6 +31,7 @@ public class TestScooterService {
         scooter.setBattery(battery);
         scooter.setLongitude(stLon);
         scooter.setLatitude(stLat);
+        scooter.setPing(true);
 
         testScooterRepo.save(scooter);
 

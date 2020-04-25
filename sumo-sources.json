@@ -1,0 +1,9 @@
+{
+  "api.version":"v1",
+  "source":{
+     "sourceType":"LocalFile",
+     "name":"simulation",
+     "pathExpression":"/var/log/simulation/spring.log",
+     "blacklist":[]
+  }
+}

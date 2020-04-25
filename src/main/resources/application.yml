@@ -30,3 +30,8 @@ feign:
         readTimeout: 160000000
 
 service-token: ${SERVICE_TOKEN}
+
+logging:
+  file:
+    path: /var/log/simulation
+

@@ -1,6 +1,6 @@
 package com.softserve.kickscootersimplesimulation.model;
 
-public enum Conditions {
+public enum Condition {
     //not implemented yet
-    HIDE, BROKE
+    NORMAL, HIDE, BROKE, STEAL
 }

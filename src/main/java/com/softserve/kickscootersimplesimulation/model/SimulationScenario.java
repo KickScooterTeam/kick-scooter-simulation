@@ -1,19 +1,37 @@
 package com.softserve.kickscootersimplesimulation.model;
 
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.UUID;
 
 @Data
-@Slf4j
+@Entity
 public class SimulationScenario {
 
-    private UUID id;
-    private Conditions specs;
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private UUID scooterId;
+
+    private Condition specs;
+
+    private double sLat;
+
+    private double sLong;
+
+    private double fLat;
+
+    private double fLong;
+
+    @Transient
     private ArrayList<Double[]> routePoints = new ArrayList<>();
-    private int battery;
+
     private int dischIndex = 3;
 
 }

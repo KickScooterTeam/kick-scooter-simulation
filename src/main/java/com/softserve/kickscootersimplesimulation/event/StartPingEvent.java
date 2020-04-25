@@ -1,13 +1,13 @@
-package com.softserve.kickscootersimplesimulation;
+package com.softserve.kickscootersimplesimulation.event;
 
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 
 @Getter
-public class StartSimulationEvent extends ApplicationEvent {
+public class StartPingEvent extends ApplicationEvent {
     private String message;
 
-    public StartSimulationEvent(Object source, String message) {
+    public StartPingEvent(Object source, String message) {
         super(source);
         this.message = message;
     }

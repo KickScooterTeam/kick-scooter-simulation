@@ -1,7 +1,7 @@
 package com.softserve.kickscootersimplesimulation.client;
 
 
-import com.softserve.kickscootersimplesimulation.model.TestScooter;
+import com.softserve.kickscootersimplesimulation.dto.TestScooterDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +13,6 @@ import java.util.UUID;
 public interface VehicleClient {
 
     @PostMapping("/scooters")
-    UUID registerScooter(@RequestHeader(HttpHeaders.AUTHORIZATION) String bearerToken, TestScooter scooter);
+    UUID registerScooter(@RequestHeader(HttpHeaders.AUTHORIZATION) String bearerToken, TestScooterDto scooter);
 
 }

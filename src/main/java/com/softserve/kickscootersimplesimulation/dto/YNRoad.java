@@ -1,4 +1,4 @@
-package com.softserve.kickscootersimplesimulation.model;
+package com.softserve.kickscootersimplesimulation.dto;
 
 import lombok.Data;
 

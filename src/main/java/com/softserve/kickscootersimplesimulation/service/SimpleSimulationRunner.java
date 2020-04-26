@@ -64,9 +64,36 @@ public class SimpleSimulationRunner {
             log.info("Send data to topic '{}': {}", RAW_DATA, dto);
             template.send(RAW_DATA, dto);
         });
-
-
     }
+
+    public void muteScooter(UUID scooterId){
+        TestScooter scooter = testScooterRepo.getOne(scooterId);
+        scooter.setPing(false);
+        testScooterRepo.save(scooter);
+    }
+
+    public void unmuteScooter(UUID scooterId){
+        TestScooter scooter = testScooterRepo.getOne(scooterId);
+        scooter.setPing(true);
+        testScooterRepo.save(scooter);
+    }
+
+    public void muteAllScooters(){
+        List<TestScooter> scooters = testScooterRepo.findAllByPing(true);
+        for (TestScooter scooter: scooters){
+            scooter.setPing(false);
+            testScooterRepo.save(scooter);
+        }
+    }
+
+    public void unmuteAllScooters(){
+        List<TestScooter> scooters = testScooterRepo.findAllByPing(false);
+        for (TestScooter scooter: scooters){
+            scooter.setPing(true);
+            testScooterRepo.save(scooter);
+        }
+    }
+
 
     @EventListener
     public void makeAndRunSimulation(StartSimulationEvent event) {

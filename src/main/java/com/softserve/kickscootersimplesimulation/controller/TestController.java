@@ -12,10 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -49,5 +46,30 @@ public class TestController {
                 new StartSimulationEvent(this, "Start", params.getScooterId(), scenario));
         return ResponseEntity.ok("New scenario started, scooter id: " + params.getScooterId());
     }
+
+    @PostMapping("/{scooterId}/mute")
+    public ResponseEntity<UUID> muteScooter(@PathVariable UUID scooterId){
+        runner.muteScooter(scooterId);
+        return ResponseEntity.ok(scooterId);
+    }
+
+    @PostMapping("/{scooterId}/unmute")
+    public ResponseEntity<UUID> unmuteScooter(@PathVariable UUID scooterId){
+        runner.unmuteScooter(scooterId);
+        return ResponseEntity.ok(scooterId);
+    }
+
+    @PostMapping("/muteAll")
+    public ResponseEntity<String> muteAllScooters(){
+        runner.muteAllScooters();
+        return ResponseEntity.ok("All scooters muted");
+    }
+
+    @PostMapping("/unmuteAll")
+    public ResponseEntity<String> unmuteAllScooters(){
+        runner.unmuteAllScooters();
+        return ResponseEntity.ok("All scooters unmuted");
+    }
+
 
 }
